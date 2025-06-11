@@ -3,584 +3,342 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paola T. - Odontología Especializada</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Sitio Responsivo Perfecto</title>
     <style>
-        /* Estilos generales */
+        /* Reset moderno */
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
-        
+
+        :root {
+            --color-primario: #2c3e50;
+            --color-secundario: #3498db;
+            --color-texto: #333;
+            --color-fondo: #f9f9f9;
+            --sombra: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --radio-borde: 8px;
+            --espaciado: 20px;
+        }
+
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #fff5f9; /* Fondo rosa claro */
-            color: #333;
+            font-family: 'Segoe UI', system-ui, sans-serif;
             line-height: 1.6;
-            overflow-x: hidden;
-            opacity: 0;
-            transition: opacity 0.5s ease;
+            color: var(--color-texto);
+            background-color: var(--color-fondo);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
-        
-        /* Efecto neón para textos */
-        .neon-text {
+
+        /* Header estilizado */
+        header {
+            background: var(--color-primario);
             color: white;
-            text-shadow: 
-                0 0 5px #ff69b4,
-                0 0 10px #ff69b4,
-                0 0 20px #ff69b4;
+            padding: var(--espaciado);
+            text-align: center;
+            box-shadow: var(--sombra);
         }
-        
-        /* Efecto neón para imágenes */
-        .neon-img {
-            box-shadow: 
-                0 0 5px #ff69b4,
-                0 0 15px #ff69b4;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-            border: 2px solid #ff69b4;
-        }
-        
-        .neon-img:hover {
-            box-shadow: 
-                0 0 10px #ff69b4,
-                0 0 30px #ff69b4;
-            transform: scale(1.02);
-        }
-        
-        /* Botones neón */
-        .btn-neon {
-            display: inline-block;
-            padding: 12px 25px;
-            background-color: #ff69b4;
-            color: white;
-            border: 2px solid #ff69b4;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            margin-top: 20px;
-            transition: all 0.3s ease;
-            box-shadow: 
-                0 0 10px rgba(255, 105, 180, 0.5);
-        }
-        
-        .btn-neon:hover {
-            background-color: transparent;
-            color: #ff69b4;
-            box-shadow: 
-                0 0 20px #ff69b4;
-        }
-        
-        /* Menú */
-        nav.menu {
+
+        /* Navegación responsiva avanzada */
+        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 5%;
-            background-color: white;
-            position: fixed;
-            width: 100%;
+            padding: var(--espaciado);
+            background: var(--color-primario);
+            position: sticky;
             top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 100;
         }
-        
-        .logo h2 {
-            font-size: 1.8rem;
-            background: linear-gradient(90deg, #ff69b4, #ffb6c1, white, #ffb6c1, #ff69b4);
-            background-size: 400% 400%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: rainbow 8s ease infinite;
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white;
+            text-decoration: none;
         }
-        
-        @keyframes rainbow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        .nav-links {
-            display: flex;
+
+        .menu {
+            display: none;
             list-style: none;
         }
-        
-        .nav-links li a {
-            color: #333;
-            text-decoration: none;
-            margin-left: 30px;
-            font-weight: 600;
-            transition: color 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .nav-links li a:hover {
-            color: #ff69b4;
-        }
-        
-        .nav-links li a i {
-            font-size: 1.1rem;
-        }
-        
-        .burger {
-            display: none;
-            cursor: pointer;
-        }
-        
-        .burger div {
-            width: 25px;
-            height: 3px;
-            background-color: #333;
-            margin: 5px;
-            transition: all 0.3s ease;
-        }
-        
-        /* Banner con fondo borroso */
-        .banner {
-            position: relative;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding-top: 80px;
-            overflow: hidden;
-        }
-        
-        .banner::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=2068&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat;
-            filter: blur(8px);
-            z-index: -2;
-        }
-        
-        /* Procedimientos */
-        .procedimientos {
-            padding: 80px 5%;
-            text-align: center;
-            background-color: white;
-        }
-        
-        .procedimientos h2 {
-            margin-bottom: 40px;
-            font-size: 2.5rem;
-            color: #ff69b4;
-        }
-        
-        .procedimientos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
-        .procedimiento {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            border: 1px solid #ffb6c1;
-        }
-        
-        .procedimiento:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 25px rgba(255, 105, 180, 0.2);
-        }
-        
-        .procedimiento img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        
-        .procedimiento h3 {
-            padding: 20px;
-            margin: 0;
-            color: #ff69b4;
-        }
-        
-        .procedimiento p {
-            padding: 0 20px 20px;
-            color: #666;
-        }
-        
-        /* Sobre mí */
-        .sobre-mi {
-            padding: 80px 5%;
-            background: linear-gradient(to bottom, #ffb6c1, white);
-        }
-        
-        .sobre-mi-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-        
-        .sobre-mi .imagen img {
-            width: 100%;
-            border-radius: 10px;
-            max-width: 350px;
-            margin: 0 auto;
-            display: block;
-            border: 3px solid white;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .sobre-mi .texto h2 {
-            margin-bottom: 20px;
-            font-size: 2rem;
-            color: #ff69b4;
-        }
-        
-        .sobre-mi .texto p {
-            margin-bottom: 15px;
-            color: #666;
-        }
-        
-        /* Redes flotantes */
-        .redes-flotantes {
-            position: fixed;
-            right: 20px;
-            bottom: 20px;
+
+        .menu.active {
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            z-index: 1000;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: var(--color-primario);
+            padding: var(--espaciado);
         }
-        
-        .redes-flotantes a {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+
+        .menu li {
+            margin: 10px 0;
+        }
+
+        .menu a {
             color: white;
-            font-size: 20px;
             text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            font-size: 1.1rem;
+            transition: color 0.3s;
+            display: block;
+            padding: 8px;
         }
-        
-        .redes-flotantes .whatsapp {
-            background-color: #25D366;
+
+        .menu a:hover {
+            color: var(--color-secundario);
         }
-        
-        .redes-flotantes .instagram {
-            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
-        }
-        
-        .redes-flotantes .facebook {
-            background-color: #4267B2;
-        }
-        
-        .redes-flotantes a:hover {
-            transform: scale(1.1);
-        }
-        
-        /* Footer */
-        footer.footer {
-            background: linear-gradient(to right, #ff69b4, #ffb6c1);
+
+        .hamburguesa {
+            display: block;
+            cursor: pointer;
+            font-size: 1.5rem;
             color: white;
-            padding: 50px 5% 20px;
-            text-align: center;
+            background: none;
+            border: none;
         }
-        
-        .footer-content {
+
+        /* Contenido principal flexible */
+        main {
+            flex: 1;
+            padding: var(--espaciado);
+        }
+
+        /* Grid de tarjetas adaptable */
+        .contenedor {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
+            grid-template-columns: 1fr;
+            gap: var(--espaciado);
+            max-width: 1400px;
             margin: 0 auto;
         }
-        
-        .footer-section h3 {
-            margin-bottom: 20px;
-            font-size: 1.3rem;
-            color: white;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+
+        .tarjeta {
+            background: white;
+            border-radius: var(--radio-borde);
+            padding: var(--espaciado);
+            box-shadow: var(--sombra);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-        
-        .footer-section p {
-            margin-bottom: 10px;
-            display: flex;
+
+        .tarjeta:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .tarjeta img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--radio-borde);
+            margin-bottom: 15px;
+        }
+
+        /* Botones accesibles */
+        .boton {
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-        }
-        
-        .footer-section i {
-            margin-right: 10px;
+            background: var(--color-secundario);
             color: white;
+            padding: 12px 24px;
+            border-radius: var(--radio-borde);
+            text-decoration: none;
+            margin-top: 15px;
+            min-width: 48px;
+            min-height: 48px;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
         }
-        
-        .footer-bottom {
+
+        .boton:hover {
+            background: #2980b9;
+        }
+
+        /* Footer mejorado */
+        footer {
+            background: var(--color-primario);
+            color: white;
             text-align: center;
-            padding-top: 20px;
-            margin-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.3);
+            padding: var(--espaciado);
+            margin-top: auto;
         }
-        
-        /* Muelitas que siguen el cursor */
-        .tooth {
-            position: fixed;
-            width: 30px;
-            height: 30px;
-            background-color: white;
-            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-            pointer-events: none;
-            z-index: 9999;
-            opacity: 0.7;
-            filter: drop-shadow(0 0 3px rgba(0,0,0,0.3));
-            transition: transform 0.1s ease;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .sobre-mi-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            
-            .banner-content h1 {
-                font-size: 2.5rem;
-            }
-            
-            .nav-links {
-                position: absolute;
-                right: 0;
-                top: 80px;
-                background-color: white;
-                width: 100%;
-                flex-direction: column;
-                align-items: center;
-                padding: 20px 0;
-                clip-path: circle(0px at 90% -10%);
-                transition: all 0.5s ease-out;
-            }
-            
-            .nav-links li {
-                margin: 15px 0;
-            }
-            
-            .burger {
-                display: block;
-            }
-            
-            .nav-active {
-                clip-path: circle(1000px at 90% -10%);
-            }
-            
-            .toggle .line1 {
-                transform: rotate(-45deg) translate(-5px, 6px);
-            }
-            
-            .toggle .line2 {
-                opacity: 0;
-            }
-            
-            .toggle .line3 {
-                transform: rotate(45deg) translate(-5px, -6px);
+
+        /* Media Queries optimizadas */
+        @media (min-width: 600px) {
+            .contenedor {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
+
+        @media (min-width: 768px) {
+            .menu {
+                display: flex;
+                flex-direction: row;
+                position: static;
+                width: auto;
+                background: transparent;
+                padding: 0;
+            }
+
+            .menu li {
+                margin: 0 0 0 1.5rem;
+            }
+
+            .hamburguesa {
+                display: none;
+            }
+
+            .contenedor {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            body {
+                font-size: 18px;
+            }
+
+            .contenedor {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .tarjeta {
+                padding: 25px;
+            }
+        }
+
+        /* Efectos de carga suaves */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tarjeta {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        .tarjeta:nth-child(2) { animation-delay: 0.1s; }
+        .tarjeta:nth-child(3) { animation-delay: 0.2s; }
+        .tarjeta:nth-child(4) { animation-delay: 0.3s; }
     </style>
 </head>
 <body>
-    <!-- Muelitas que siguen el cursor -->
-    <div id="teeth-container"></div>
-
-    <!-- Menú -->
-    <nav class="menu">
-        <div class="logo">
-            <h2>Paola T.</h2>
-        </div>
-        <ul class="nav-links">
-            <li><a href="#inicio"><i class="fas fa-home"></i> Inicio</a></li>
-            <li><a href="#procedimientos"><i class="fas fa-teeth"></i> Procedimientos</a></li>
-            <li><a href="#sobre-mi"><i class="fas fa-user-md"></i> Sobre mí</a></li>
-            <li><a href="#contacto"><i class="fas fa-phone-alt"></i> Contacto</a></li>
-        </ul>
-        <div class="burger">
-            <div class="line1"></div>
-            <div class="line2"></div>
-            <div class="line3"></div>
-        </div>
-    </nav>
-
-       <!-- Banner principal con fondo borroso -->
-    <header class="banner" id="inicio">
-        <div class="banner-content">
-            <h1 class="neon-text">Agenda tu cita</h1>
-            <a href="#contacto" class="btn-neon">Contáctanos</a>
-        </div>
+    <header>
+        <h1>Mi Sitio Perfectamente Responsivo</h1>
+        <p>Se ve increíble en cualquier dispositivo</p>
     </header>
 
-    <!-- Sección de procedimientos -->
-    <section class="procedimientos" id="procedimientos">
-        <h2>Nuestros procedimientos</h2>
-        <div class="procedimientos-grid">
-            <div class="procedimiento">
-                <img src="https://images.unsplash.com/photo-1670250492416-570b5b7343b1?q=80&w=1925&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Limpieza dental" class="neon-img">
-                <h3>Limpieza Dental</h3>
-                <p>Eliminación de placa y sarro para una sonrisa más brillante</p>
-            </div>
-            <div class="procedimiento">
-                <img src="https://plus.unsplash.com/premium_photo-1674575134867-cb7623d39bdb?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Ortodoncia" class="neon-img">
-                <h3>Ortodoncia</h3>
-                <p>Corrección de la alineación dental para una sonrisa perfecta</p>
-            </div>
-            <div class="procedimiento">
-                <img src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Implantes" class="neon-img">
-                <h3>Implantes</h3>
-                <p>Solución permanente para dientes perdidos</p>
-            </div>
-        </div>
-    </section>
+    <nav>
+        <a href="#" class="logo">MiSitio</a>
+        <button class="hamburguesa" aria-label="Menú">☰</button>
+        <ul class="menu">
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Servicios</a></li>
+            <li><a href="#">Portafolio</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+    </nav>
 
-    <!-- Sección sobre la dentista -->
-    <section class="sobre-mi" id="sobre-mi">
-        <div class="sobre-mi-content">
-            <div class="texto">
-                <h2>Dra. Paola T.</h2>
-                <p>Odontóloga con más de 2 años de experiencia en el cuidado dental integral.</p>
-                <p>Especializada en odontología estética y reconstructiva, mi pasión es transformar sonrisas y devolver la confianza a mis pacientes.</p>
-                <p>Utilizo tecnología de vanguardia y técnicas mínimamente invasivas para garantizar tratamientos efectivos y cómodos.</p>
-                <a href="https://wa.me/525565633037" class="btn-neon">Agendar cita</a>
-            </div>
-            <div class="imagen">
-                <!-- Puedes ajustar el tamaño cambiando el valor de max-width en el CSS (actualmente 350px) -->
-                <img src="img/Pao.jpg" alt="Dra. Paola" class="neon-img">
-            </div>
-        </div>
-    </section>
+    <main>
+        <div class="contenedor">
+            <article class="tarjeta">
+                <img src="https://via.placeholder.com/400x300" alt="Ejemplo 1">
+                <h2>Diseño Web</h2>
+                <p>Creación de sitios web modernos y completamente responsivos que se adaptan a todos los dispositivos.</p>
+                <a href="#" class="boton">Más información</a>
+            </article>
 
-    <!-- Botones flotantes de redes sociales -->
-    <div class="redes-flotantes">
-        <a href="https://wa.me/525565633037" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://www.instagram.com/__danyt__/" class="instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.facebook.com/people/Daniela-Jimenez/pfbid028Ke2MGEHhXS5TtEUB4kGibGoV6CmmHJaaEAsJW4VKBZZxUZFg3JdFprQTLEHJ6eSl/?mibextid=wwXIfr&rdid=rtt12yipt2ghHcFV&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F16aLFjV7Uz%2F%3Fmibextid%3DwwXIfr" class="facebook"><i class="fab fa-facebook-f"></i></a>
-    </div>
+            <article class="tarjeta">
+                <img src="https://via.placeholder.com/400x300" alt="Ejemplo 2">
+                <h2>Desarrollo Móvil</h2>
+                <p>Aplicaciones nativas e híbridas para iOS y Android con las mejores tecnologías del mercado.</p>
+                <a href="#" class="boton">Más información</a>
+            </article>
 
-    <!-- Footer -->
-    <footer class="footer" id="contacto">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Horario</h3>
-                <p><i class="far fa-clock"></i> Lunes a Viernes: 9am - 6pm</p>
-                <p><i class="far fa-clock"></i> Sábados: 10am - 2pm</p>
-            </div>
-            <div class="footer-section">
-                <h3>Contacto</h3>
-                <p><i class="fas fa-phone"></i> 55 6563 3037</p>
-                <p><i class="fas fa-envelope"></i> info@paodentista.com</p>
-            </div>
-            <div class="footer-section">
-                <h3>Dirección</h3>
-                <p><i class="fas fa-map-marker-alt"></i> Priv. Ignacio R Alatorre</p>
-                <p><i class="fas fa-city"></i> Villa Nicolas Romero, CP 54459</p>
-            </div>
+            <article class="tarjeta">
+                <img src="https://via.placeholder.com/400x300" alt="Ejemplo 3">
+                <h2>SEO Avanzado</h2>
+                <p>Optimización para motores de búsqueda que aumenta tu visibilidad y tráfico orgánico.</p>
+                <a href="#" class="boton">Más información</a>
+            </article>
+
+            <article class="tarjeta">
+                <img src="https://via.placeholder.com/400x300" alt="Ejemplo 4">
+                <h2>Marketing Digital</h2>
+                <p>Estrategias completas para posicionar tu marca y llegar a más clientes potenciales.</p>
+                <a href="#" class="boton">Más información</a>
+            </article>
         </div>
-        <div class="footer-bottom">
-            &copy; 2025 Paola T. Todos los derechos reservados.
-        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 MiSitio Responsivo. Todos los derechos reservados.</p>
+        <p>Diseñado para verse perfecto en cualquier pantalla</p>
     </footer>
 
+    <!-- JavaScript mejorado -->
     <script>
-        // Menú hamburguesa
-        const burger = document.querySelector('.burger');
-        const nav = document.querySelector('.nav-links');
-        const navLinks = document.querySelectorAll('.nav-links li');
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburguesa = document.querySelector('.hamburguesa');
+            const menu = document.querySelector('.menu');
 
-        burger.addEventListener('click', () => {
-            nav.classList.toggle('nav-active');
-            burger.classList.toggle('toggle');
-        });
-
-        // Cerrar menú al hacer clic en un enlace
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                nav.classList.remove('nav-active');
-                burger.classList.remove('toggle');
+            // Menú hamburguesa
+            hamburguesa.addEventListener('click', function() {
+                menu.classList.toggle('active');
+                this.setAttribute('aria-expanded', menu.classList.contains('active'));
             });
-        });
 
-        // Smooth scrolling para los enlaces
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
+            // Cerrar menú al hacer clic en un enlace (mobile)
+            document.querySelectorAll('.menu a').forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth < 768) {
+                        menu.classList.remove('active');
+                        hamburguesa.setAttribute('aria-expanded', 'false');
+                    }
                 });
             });
-        });
 
-        // Efecto de carga
-        document.addEventListener('DOMContentLoaded', () => {
-            document.body.style.opacity = '1';
-            
-            // Crear muelitas que siguen el cursor
-            const teethContainer = document.getElementById('teeth-container');
-            const teethCount = 5;
-            
-            for (let i = 0; i < teethCount; i++) {
-                const tooth = document.createElement('div');
-                tooth.classList.add('tooth');
-                tooth.style.width = `${30 - i * 3}px`;
-                tooth.style.height = `${30 - i * 3}px`;
-                tooth.style.opacity = `${0.7 - i * 0.1}`;
-                teethContainer.appendChild(tooth);
-            }
-            
-            const teeth = document.querySelectorAll('.tooth');
-            let mouseX = 0;
-            let mouseY = 0;
-            let prevMouseX = 0;
-            let prevMouseY = 0;
-            
-            // Capturar posición del mouse
-            document.addEventListener('mousemove', (e) => {
-                mouseX = e.clientX;
-                mouseY = e.clientY;
+            // Efecto de carga progresiva para imágenes (mejora de performance)
+            const lazyLoad = () => {
+                const images = document.querySelectorAll('img[data-src]');
+                
+                if ('IntersectionObserver' in window) {
+                    const imageObserver = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                const img = entry.target;
+                                img.src = img.getAttribute('data-src');
+                                img.removeAttribute('data-src');
+                                imageObserver.unobserve(img);
+                            }
+                        });
+                    });
+
+                    images.forEach(img => imageObserver.observe(img));
+                } else {
+                    // Fallback para navegadores antiguos
+                    images.forEach(img => {
+                        img.src = img.getAttribute('data-src');
+                    });
+                }
+            };
+
+            // Cambiar las imágenes estáticas por versiones con lazy loading
+            document.querySelectorAll('img').forEach(img => {
+                if (!img.hasAttribute('data-src')) {
+                    img.setAttribute('data-src', img.src);
+                    img.removeAttribute('src');
+                }
             });
-            
-            // Animación de las muelitas
-            function animateTeeth() {
-                let posX = prevMouseX + (mouseX - prevMouseX) / 10;
-                let posY = prevMouseY + (mouseY - prevMouseY) / 10;
-                
-                teeth.forEach((tooth, index) => {
-                    const delay = index * 0.05;
-                    
-                    setTimeout(() => {
-                        tooth.style.left = `${posX - tooth.offsetWidth / 2}px`;
-                        tooth.style.top = `${posY - tooth.offsetHeight / 2}px`;
-                        
-                        // Actualizar posición para la siguiente muelita
-                        posX += (mouseX - posX) / 5;
-                        posY += (mouseY - posY) / 5;
-                    }, delay * 1000);
-                });
-                
-                prevMouseX = posX;
-                prevMouseY = posY;
-                
-                requestAnimationFrame(animateTeeth);
-            }
-            
-            animateTeeth();
+
+            lazyLoad();
         });
     </script>
 </body>
