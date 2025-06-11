@@ -703,54 +703,6 @@
                 });
             });
             
-            // Muelitas que siguen el cursor
-            const teethContainer = document.getElementById('teeth-container');
-            const teethCount = 5;
-            
-            for (let i = 0; i < teethCount; i++) {
-                const tooth = document.createElement('div');
-                tooth.classList.add('tooth');
-                tooth.style.width = `${30 - i * 3}px`;
-                tooth.style.height = `${30 - i * 3}px`;
-                tooth.style.opacity = `${0.7 - i * 0.1}`;
-                teethContainer.appendChild(tooth);
-            }
-            
-            const teeth = document.querySelectorAll('.tooth');
-            let mouseX = 0;
-            let mouseY = 0;
-            let prevMouseX = 0;
-            let prevMouseY = 0;
-            
-            document.addEventListener('mousemove', (e) => {
-                mouseX = e.clientX;
-                mouseY = e.clientY;
-            });
-            
-            function animateTeeth() {
-                let posX = prevMouseX + (mouseX - prevMouseX) / 10;
-                let posY = prevMouseY + (mouseY - prevMouseY) / 10;
-                
-                teeth.forEach((tooth, index) => {
-                    const delay = index * 0.05;
-                    
-                    setTimeout(() => {
-                        tooth.style.left = `${posX - tooth.offsetWidth / 2}px`;
-                        tooth.style.top = `${posY - tooth.offsetHeight / 2}px`;
-                        
-                        posX += (mouseX - posX) / 5;
-                        posY += (mouseY - posY) / 5;
-                    }, delay * 1000);
-                });
-                
-                prevMouseX = posX;
-                prevMouseY = posY;
-                
-                requestAnimationFrame(animateTeeth);
-            }
-            
-            animateTeeth();
-            
             // Carga diferida de imágenes
             if ('IntersectionObserver' in window) {
                 const lazyImages = document.querySelectorAll('img[data-src]');
